@@ -1,0 +1,35 @@
+.box .name-input label{
+    color: #fa5b5b;
+}
+.box .email-input label{
+    color: #0f8d39;
+}
+.box .password-input label{
+    color: #059fce;
+}
+
+.box .name-input:hover input{
+    border-bottom: 2px solid #fa5b5b;
+}
+.box .email-input:hover input{
+    border-bottom: 2px solid #0f8d39;
+}
+.box .password-input:hover input{
+    border-bottom: 2px solid #059fce;
+}
+
+.box .btn .name-next{
+    background-color: #fc4a4a;
+}
+.box .btn .email-back,
+.box .btn .email-next{
+    background-color: #0f8d39;
+}
+.box .btn .password-back,
+.box .btn .password-next{
+    background-color: #059fce;
+}
+.box .btn .finish-back,
+.box .btn .finish-next{
+    background-color: #f8861b;
+}
