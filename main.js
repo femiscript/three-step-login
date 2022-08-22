@@ -1,28 +1,40 @@
-let btn = document.querySelectorAll("a");
+let btn = document.querySelectorAll("button");
+let box = document.querySelectorAll('.box');
+let userInput = document.querySelectorAll('input');
+let boxIndex = 0;
 
 btn.forEach((button) => {
     button.addEventListener('click', (e) => {
-        console.log(e.currentTarget);
-
-        if (e.currentTarget.classList.contains('finish-next')) {
-            document.querySelector(".finish").classList.toggle('hidden');
-            document.querySelector(".username").classList.toggle('hidden');
-            document.querySelector("body").style.background = "#fc4a4a";
-        }
-        else if (e.currentTarget.classList.contains('name-next')) {
-            document.querySelector(".username").classList.toggle('hidden');
-            document.querySelector(".email").classList.toggle('hidden');
-            document.querySelector("body").style.background = "#0f8d39";
-        }
-        else if (e.currentTarget.classList.contains('email-next')) {
-            document.querySelector(".email").classList.toggle('hidden');
-            document.querySelector(".password").classList.toggle('hidden');
-            document.querySelector("body").style.background = "#059fce";
-        }
-        else if (e.currentTarget.classList.contains('password-next')) {
-            document.querySelector(".password").classList.toggle('hidden');
-            document.querySelector(".finish").classList.toggle('hidden');
-            document.querySelector("body").style.background = "#ce6605";
-        }
+        completeForm(e);
     });
 });
+
+function completeForm(e) {
+    if (e.currentTarget.classList.contains('finish')) {
+        box[boxIndex].classList.add('hidden');
+        boxIndex = 0;
+        box[boxIndex].classList.remove('hidden');
+
+        // Clear all user input on subitting the form
+        userInput.forEach(input => {
+            console.log(input.value)
+            input.value = '';
+        });
+    }
+    else if (e.currentTarget.classList.contains('next')) {
+        //check empty input
+        if (userInput[boxIndex].value !== "") {
+            box[boxIndex].classList.add('hidden');
+            boxIndex++;
+            box[boxIndex].classList.remove('hidden');
+        } else {
+            alert("Fill all compulsory fields to proceed");
+        }
+
+    }
+    else if (e.currentTarget.classList.contains('back')) {
+        box[boxIndex].classList.add('hidden');
+        boxIndex--;
+        box[boxIndex].classList.remove('hidden');
+    }
+}
